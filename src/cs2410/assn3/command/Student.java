@@ -10,6 +10,54 @@ public class Student {
     String majorCode;
     String studentID;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getMajorCode() {
+        return majorCode;
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setMajorCode(String majorCode) {
+        this.majorCode = majorCode;
+    }
+
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
+    }
+
+    Student() {
+        firstName = "";
+        lastName = "";
+        age = "";
+        majorCode = "";
+        studentID = "";
+    }
+
     Student(String line) {
         String student[] = line.split(" ");
         firstName = student[0];
@@ -27,7 +75,11 @@ public class Student {
         studentID = student.get(4);
     }
 
+    public String toString() {
+        return firstName + " " + lastName + ", age: " + age + ", major: " + majorCode + ", id: " + studentID;
+    }
+
     public void printStudent() {
-        System.out.println(firstName + " " + lastName + ", age: " + age + ", major: " + majorCode + ", id: " + studentID);
+        System.out.println(toString());
     }
 }

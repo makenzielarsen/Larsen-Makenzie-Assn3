@@ -9,6 +9,11 @@ import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
 
+// GUIDirectory - MenuDialog
+// DirectoryListingDialog
+// StudentInputDialog - allows you to set the label
+// use system error and alert dialogs for other stuff
+
 public class GUIDirectory extends JDialog implements ActionListener {
 
     private CommandDirectory directory;
@@ -75,6 +80,7 @@ public class GUIDirectory extends JDialog implements ActionListener {
         // do the thing for that value
         switch (Integer.parseInt(textField.getText())) {
             case 1:
+
                 directory.printDirectory();
                 break;
             case 2:

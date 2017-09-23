@@ -18,6 +18,10 @@ public class CommandDirectory {
         }
     }
 
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
     /**
      *
      * @return
