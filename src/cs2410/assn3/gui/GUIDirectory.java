@@ -77,6 +77,10 @@ public class GUIDirectory extends JDialog implements ActionListener {
         }
     }
 
+    public void quit() {
+        System.exit(0);
+    }
+
     private void pressedOK() throws IOException {
         // parse the value of the the text field
         // do the thing for that value
@@ -101,6 +105,7 @@ public class GUIDirectory extends JDialog implements ActionListener {
                 System.out.println('\n');
                 break;
             case 4:
+                quit();
                 break;
             default:
                 System.out.println("Invalid choice.");
@@ -108,6 +113,6 @@ public class GUIDirectory extends JDialog implements ActionListener {
     }
 
     private void pressedCancel() {
-
+        quit();
     }
 }
