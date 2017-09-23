@@ -103,6 +103,7 @@ public class GUIDirectory extends JDialog implements ActionListener {
                 String num = String.format("%.1f", average);
                 System.out.println("The average age of all the students is " + num + " years.");
                 System.out.println('\n');
+                JOptionPane.showMessageDialog(this, "The average age of all the students is " + num + " years.", "Average Age");
                 break;
             case 4:
                 quit();
