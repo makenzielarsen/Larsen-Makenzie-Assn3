@@ -85,7 +85,13 @@ public class GUIDirectory extends JDialog {
     }
 
     private void pressedOK() {
-        int choice = Integer.parseInt(textField.getText());
+        int choice;
+        try {
+            choice = Integer.parseInt(textField.getText());
+        } catch(NumberFormatException e){
+            choice = 5;
+        }
+
         textField.setText("");
         switch (choice) {
             case 1:
@@ -103,7 +109,7 @@ public class GUIDirectory extends JDialog {
                 quit();
                 break;
             default:
-                System.out.println("Invalid choice.");
+                JOptionPane.showMessageDialog(this, "Invalid Input", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
