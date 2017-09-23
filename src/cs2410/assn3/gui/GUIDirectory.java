@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.StringJoiner;
 
 // GUIDirectory - MenuDialog
 // DirectoryListingDialog
@@ -63,6 +64,33 @@ public class GUIDirectory extends JDialog implements ActionListener {
         return topPanel;
     }
 
+    private void createStudentInputPanel(String prompt) throws IOException {
+
+        JDialog dialog = new JDialog(this, "Create Student");
+        dialog.setVisible(true);
+
+        JPanel topPanel = new JPanel();
+        JPanel bottomPanel = new JPanel();
+
+        JTextArea menu = new JTextArea(prompt);
+        textField = new JTextField();
+        textField.setColumns(5);
+
+        topPanel.add(menu);
+        topPanel.add(textField);
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
+
+        JButton enter = new JButton("Enter");
+        enter.addActionListener(this);
+
+        bottomPanel.add(enter);
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.LINE_AXIS));
+
+        setSize(400, 300);
+        add(topPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.PAGE_END);
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -86,24 +114,38 @@ public class GUIDirectory extends JDialog implements ActionListener {
         // do the thing for that value
         switch (Integer.parseInt(textField.getText())) {
             case 1:
-
-//                directory.printDirectory();
+                String formatString = "%-15s %-15s %3s %-10s %-20s";
+                StringJoiner stringJoiner = new StringJoiner("\n");
+                for(int i = 0; i < directory.getStudentSize(); i++) {
+                    Student temp = directory.getStudent(i);
+                    String student = String.format(formatString , temp.getFirstName(), temp.getLastName(), temp.getAge(), temp.getMajorCode(), temp.getStudentID() );
+                    stringJoiner.add(student);
+                }
+                String header = String.format(formatString , "First Name", "Last Name", "Age", "Major Code", "Student ID Number");
+                String output = stringJoiner.toString();
+                JOptionPane.showMessageDialog(this, header + "\n" + output, "Directory", JOptionPane.PLAIN_MESSAGE);
                 break;
             case 2:
-//                Student freshMeat = directory.addStudent();
-//                if (freshMeat != null) {
-//                    System.out.println('\n');
-//                    System.out.println("The following student has been added to the Directory: ");
-//                    freshMeat.printStudent();
-//                    System.out.println('\n');
-//                }
+                List inputPrompts = new List();
+                inputPrompts.add("First Name: ");
+                inputPrompts.add("Last Name: ");
+                inputPrompts.add("Age: ");
+                inputPrompts.add("Major Code");
+                inputPrompts.add("Student ID Number");
+                List studentInput = new List();
+                for (int i = 0; i < directory.getStudentSize(); i++) {
+                    createStudentInputPanel(inputPrompts.getItem(i));
+                    studentInput.add(textField.getText());
+                }
+
+                Student freshMeat = new Student(studentInput.toString());
+
+                JOptionPane.showMessageDialog(this, "The following student has been added to the Directory: \n " + freshMeat.toString());
                 break;
             case 3:
                 double average = directory.calculateAverageAge();
                 String num = String.format("%.1f", average);
-                System.out.println("The average age of all the students is " + num + " years.");
-                System.out.println('\n');
-                JOptionPane.showMessageDialog(this, "The average age of all the students is " + num + " years.", "Average Age");
+                JOptionPane.showMessageDialog(this, "The average age of all the students is " + num + " years.", "Average Age", JOptionPane.PLAIN_MESSAGE);
                 break;
             case 4:
                 quit();
