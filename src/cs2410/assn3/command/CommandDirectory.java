@@ -9,7 +9,7 @@ public class CommandDirectory {
 
     List<Student> students = new ArrayList<>(100);
 
-    CommandDirectory(FileReader fileReader) throws IOException {
+    public CommandDirectory(FileReader fileReader) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line;
         while ((line = bufferedReader.readLine()) != null) {
