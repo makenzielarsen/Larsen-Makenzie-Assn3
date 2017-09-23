@@ -64,31 +64,22 @@ public class GUIDirectory extends JDialog implements ActionListener {
         return topPanel;
     }
 
-    private void createStudentInputPanel(String prompt) throws IOException {
+    private void promptUserToAddStudent() throws IOException {
+        Student freshMeat = new Student();
+        freshMeat.setFirstName(JOptionPane.showInputDialog(this, "First Name:"));
+        if (freshMeat.getFirstName() == null) { return; }
+        freshMeat.setLastName(JOptionPane.showInputDialog(this, "Last Name:"));
+        if (freshMeat.getLastName() == null) { return; }
+        freshMeat.setAge(JOptionPane.showInputDialog(this, "Age:"));
+        if (freshMeat.getAge() == null) { return; }
+        freshMeat.setMajorCode(JOptionPane.showInputDialog(this, "Major Code:"));
+        if (freshMeat.getMajorCode() == null) { return; }
+        freshMeat.setStudentID(JOptionPane.showInputDialog(this, "Student ID:"));
+        if (freshMeat.getStudentID() == null) { return; }
 
-        JDialog dialog = new JDialog(this, "Create Student");
-        dialog.setVisible(true);
+        directory.addStudent(freshMeat);
 
-        JPanel topPanel = new JPanel();
-        JPanel bottomPanel = new JPanel();
-
-        JTextArea menu = new JTextArea(prompt);
-        textField = new JTextField();
-        textField.setColumns(5);
-
-        topPanel.add(menu);
-        topPanel.add(textField);
-        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
-
-        JButton enter = new JButton("Enter");
-        enter.addActionListener(this);
-
-        bottomPanel.add(enter);
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.LINE_AXIS));
-
-        setSize(400, 300);
-        add(topPanel, BorderLayout.CENTER);
-        add(bottomPanel, BorderLayout.PAGE_END);
+        JOptionPane.showMessageDialog(this, "The following student has been added to the Directory: \n " + freshMeat.toString());
     }
 
 
@@ -126,21 +117,7 @@ public class GUIDirectory extends JDialog implements ActionListener {
                 JOptionPane.showMessageDialog(this, header + "\n" + output, "Directory", JOptionPane.PLAIN_MESSAGE);
                 break;
             case 2:
-                List inputPrompts = new List();
-                inputPrompts.add("First Name: ");
-                inputPrompts.add("Last Name: ");
-                inputPrompts.add("Age: ");
-                inputPrompts.add("Major Code");
-                inputPrompts.add("Student ID Number");
-                List studentInput = new List();
-                for (int i = 0; i < directory.getStudentSize(); i++) {
-                    createStudentInputPanel(inputPrompts.getItem(i));
-                    studentInput.add(textField.getText());
-                }
-
-                Student freshMeat = new Student(studentInput.toString());
-
-                JOptionPane.showMessageDialog(this, "The following student has been added to the Directory: \n " + freshMeat.toString());
+                promptUserToAddStudent();
                 break;
             case 3:
                 double average = directory.calculateAverageAge();
