@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d05f18fc-2a1a-4655-979e-f1126eb748e8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/cs2410-directory.data" afterPath="$PROJECT_DIR$/data/cs2410-directory.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs2410/assn3/gui/GUIDirectory.java" afterPath="$PROJECT_DIR$/src/cs2410/assn3/gui/GUIDirectory.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,8 +44,8 @@
       <file leaf-file-name="Directory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs2410/assn3/Directory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#calculateAverageAge#0;class#Directory#0" expanded="false" />
@@ -58,15 +57,12 @@
       <file leaf-file-name="GUIDirectory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs2410/assn3/gui/GUIDirectory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="148" column="53" lean-forward="false" selection-start-line="148" selection-start-column="53" selection-end-line="148" selection-end-column="53" />
+            <state relative-caret-position="415">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#main#0;class#GUIDirectory#0" expanded="false" />
-                <element signature="method#createBottomPanel#0;class#GUIDirectory#0" expanded="false" />
                 <element signature="method#createTopPanel#0;class#GUIDirectory#0" expanded="false" />
-                <element signature="method#promptUserToAddStudent#0;class#GUIDirectory#0" expanded="false" />
-                <element signature="method#actionPerformed#0;class#GUIDirectory#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -298,12 +294,12 @@
       <option name="presentableId" value="Default" />
       <updated>1506056196411</updated>
       <workItem from="1506056198095" duration="37075000" />
-      <workItem from="1506149132365" duration="10836000" />
+      <workItem from="1506149132365" duration="11167000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47911000" />
+    <option name="totallyTimeSpent" value="48242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="15" y="23" width="1260" height="750" extended-state="0" />
@@ -432,10 +428,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#main#0;class#GUIDirectory#0" expanded="false" />
-            <element signature="method#createBottomPanel#0;class#GUIDirectory#0" expanded="false" />
             <element signature="method#createTopPanel#0;class#GUIDirectory#0" expanded="false" />
-            <element signature="method#promptUserToAddStudent#0;class#GUIDirectory#0" expanded="false" />
-            <element signature="method#actionPerformed#0;class#GUIDirectory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -498,17 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs2410/assn3/Directory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#calculateAverageAge#0;class#Directory#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/awt/event/ActionListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -525,17 +507,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs2410/assn3/Directory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#calculateAverageAge#0;class#Directory#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs2410/assn3/gui/GUIDirectory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="148" column="53" lean-forward="false" selection-start-line="148" selection-start-column="53" selection-end-line="148" selection-end-column="53" />
+        <state relative-caret-position="415">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#main#0;class#GUIDirectory#0" expanded="false" />
-            <element signature="method#createBottomPanel#0;class#GUIDirectory#0" expanded="false" />
             <element signature="method#createTopPanel#0;class#GUIDirectory#0" expanded="false" />
-            <element signature="method#promptUserToAddStudent#0;class#GUIDirectory#0" expanded="false" />
-            <element signature="method#actionPerformed#0;class#GUIDirectory#0" expanded="false" />
           </folding>
         </state>
       </provider>

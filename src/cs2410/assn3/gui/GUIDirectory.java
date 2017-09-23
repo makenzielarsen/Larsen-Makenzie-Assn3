@@ -9,9 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.StringJoiner;
 
-public class GUIDirectory extends JDialog implements ActionListener {
+public class GUIDirectory extends JDialog {
 
     private Directory directory;
 
@@ -38,9 +37,9 @@ public class GUIDirectory extends JDialog implements ActionListener {
     private JPanel createBottomPanel() {
         JPanel bottomPanel = new JPanel();
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(this);
+        cancelButton.addActionListener(e -> pressedCancel());
         JButton okButton = new JButton("OK");
-        okButton.addActionListener(this);
+        okButton.addActionListener(e -> pressedOK());
         bottomPanel.add(cancelButton);
         bottomPanel.add(okButton);
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.LINE_AXIS));
@@ -58,7 +57,7 @@ public class GUIDirectory extends JDialog implements ActionListener {
         return topPanel;
     }
 
-    private void promptUserToAddStudent() throws IOException {
+    private void promptUserToAddStudent() {
         Student freshMeat = new Student();
         freshMeat.setFirstName(JOptionPane.showInputDialog(this, "First Name:"));
         if (freshMeat.getFirstName() == null) { return; }
@@ -71,30 +70,20 @@ public class GUIDirectory extends JDialog implements ActionListener {
         freshMeat.setStudentID(JOptionPane.showInputDialog(this, "Student ID:"));
         if (freshMeat.getStudentID() == null) { return; }
 
-        directory.addStudent(freshMeat);
+        try {
+            directory.addStudent(freshMeat);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         JOptionPane.showMessageDialog(this, "The following student has been added to the Directory: \n " + freshMeat.toString());
-    }
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand() == "OK") {
-            try {
-                pressedOK();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        } else {
-            pressedCancel();
-        }
     }
 
     public void quit() {
         System.exit(0);
     }
 
-    private void pressedOK() throws IOException {
+    private void pressedOK() {
         // parse the value of the the text field
         // do the thing for that value
         switch (Integer.parseInt(textField.getText())) {
