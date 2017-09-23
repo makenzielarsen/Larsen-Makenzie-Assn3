@@ -2,7 +2,6 @@ package cs2410.assn3.gui;
 
 import cs2410.assn3.Directory;
 import cs2410.assn3.Student;
-import cs2410.assn3.command.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,11 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringJoiner;
-
-// GUIDirectory - MenuDialog
-// DirectoryListingDialog
-// StudentInputDialog - allows you to set the label
-// use system error and alert dialogs for other stuff
 
 public class GUIDirectory extends JDialog implements ActionListener {
 
@@ -105,16 +99,7 @@ public class GUIDirectory extends JDialog implements ActionListener {
         // do the thing for that value
         switch (Integer.parseInt(textField.getText())) {
             case 1:
-                String formatString = "%-15s %-15s %3s %-10s %-20s";
-                StringJoiner stringJoiner = new StringJoiner("\n");
-                for(int i = 0; i < directory.getStudentSize(); i++) {
-                    Student temp = directory.getStudent(i);
-                    String student = String.format(formatString , temp.getFirstName(), temp.getLastName(), temp.getAge(), temp.getMajorCode(), temp.getStudentID() );
-                    stringJoiner.add(student);
-                }
-                String header = String.format(formatString , "First Name", "Last Name", "Age", "Major Code", "Student ID Number");
-                String output = stringJoiner.toString();
-                JOptionPane.showMessageDialog(this, header + "\n" + output, "Directory", JOptionPane.PLAIN_MESSAGE);
+                showDirectory();
                 break;
             case 2:
                 promptUserToAddStudent();
@@ -130,6 +115,40 @@ public class GUIDirectory extends JDialog implements ActionListener {
             default:
                 System.out.println("Invalid choice.");
         }
+    }
+
+    private void showDirectory() {
+        JDialog dialog = new JDialog();
+        JPanel topPanel = new JPanel();
+        JPanel bottomPanel = new JPanel();
+
+        dialog.setSize(400,400);
+        topPanel.setSize(350,350);
+        topPanel.setLayout(new GridLayout(0,5));
+
+        topPanel.add(new JLabel("First name", SwingConstants.LEFT));
+        topPanel.add(new JLabel("Last name", SwingConstants.LEFT));
+        topPanel.add(new JLabel("Age", SwingConstants.LEFT));
+        topPanel.add(new JLabel("Major Code", SwingConstants.LEFT));
+        topPanel.add(new JLabel("Student ID", SwingConstants.LEFT));
+
+        for(int i = 0; i < directory.getStudentSize(); i++) {
+            Student student = directory.getStudent(i);
+            topPanel.add(new JLabel(student.getFirstName(), SwingConstants.LEFT));
+            topPanel.add(new JLabel(student.getLastName(), SwingConstants.LEFT));
+            topPanel.add(new JLabel(student.getAge(), SwingConstants.LEFT));
+            topPanel.add(new JLabel(student.getMajorCode(), SwingConstants.LEFT));
+            topPanel.add(new JLabel(student.getStudentID(), SwingConstants.LEFT));
+        }
+
+        JButton okButton = new JButton("OK");
+        okButton.addActionListener(e -> dialog.setVisible(false));
+        bottomPanel.add(okButton);
+
+        dialog.add(topPanel, BorderLayout.CENTER);
+        dialog.add(bottomPanel, BorderLayout.PAGE_END);
+
+        dialog.setVisible(true);
     }
 
     private void pressedCancel() {
