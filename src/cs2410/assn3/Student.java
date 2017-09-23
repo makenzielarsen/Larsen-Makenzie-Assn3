@@ -1,14 +1,14 @@
-package cs2410.assn3.command;
+package cs2410.assn3;
 
 import java.util.List;
 
 public class Student {
 
-    String firstName;
-    String lastName;
-    String age;
-    String majorCode;
-    String studentID;
+    private String firstName;
+    private String lastName;
+    private String age;
+    private String majorCode;
+    private String studentID;
 
     public String getFirstName() {
         return firstName;
@@ -50,7 +50,7 @@ public class Student {
         this.studentID = studentID;
     }
 
-    Student() {
+    public Student() {
         firstName = "";
         lastName = "";
         age = "";
@@ -58,7 +58,7 @@ public class Student {
         studentID = "";
     }
 
-    Student(String line) {
+    public Student(String line) {
         String student[] = line.split(" ");
         firstName = student[0];
         lastName  = student[1];
@@ -67,7 +67,7 @@ public class Student {
         studentID = student[4];
     }
 
-    Student(List<String> student){
+    public Student(List<String> student){
         firstName = student.get(0);
         lastName  = student.get(1);
         age = student.get(2);

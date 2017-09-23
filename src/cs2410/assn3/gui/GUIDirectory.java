@@ -1,5 +1,7 @@
 package cs2410.assn3.gui;
 
+import cs2410.assn3.Directory;
+import cs2410.assn3.Student;
 import cs2410.assn3.command.*;
 
 import javax.swing.*;
@@ -16,7 +18,7 @@ import java.io.IOException;
 
 public class GUIDirectory extends JDialog implements ActionListener {
 
-    private CommandDirectory directory;
+    private Directory directory;
 
     private JTextField textField;
 
@@ -27,8 +29,8 @@ public class GUIDirectory extends JDialog implements ActionListener {
 
     GUIDirectory() throws IOException {
         super();
-        FileReader fileReader = new FileReader("data/cs2410-directory.data");
-        directory = new CommandDirectory(fileReader);
+        FileReader fileReader = new FileReader("data/cs2410-Directory.data");
+        directory = new Directory(fileReader);
 
         setSize(400, 300);
         JPanel topPanel = createTopPanel();
@@ -52,7 +54,7 @@ public class GUIDirectory extends JDialog implements ActionListener {
 
     private JPanel createTopPanel() {
         JPanel topPanel = new JPanel();
-        JTextArea menu = new JTextArea("Menu: \n 1. List directory contents \n 2. Add new student to the directory \n 3. Display average age of students \n 4. Quit program. \n");
+        JTextArea menu = new JTextArea("Menu: \n 1. List Directory contents \n 2. Add new student to the Directory \n 3. Display average age of students \n 4. Quit program. \n");
         textField = new JTextField();
         textField.setColumns(5);
         topPanel.add(menu);
@@ -81,16 +83,16 @@ public class GUIDirectory extends JDialog implements ActionListener {
         switch (Integer.parseInt(textField.getText())) {
             case 1:
 
-                directory.printDirectory();
+//                directory.printDirectory();
                 break;
             case 2:
-                Student freshMeat = directory.addStudent();
-                if (freshMeat != null) {
-                    System.out.println('\n');
-                    System.out.println("The following student has been added to the directory: ");
-                    freshMeat.printStudent();
-                    System.out.println('\n');
-                }
+//                Student freshMeat = directory.addStudent();
+//                if (freshMeat != null) {
+//                    System.out.println('\n');
+//                    System.out.println("The following student has been added to the Directory: ");
+//                    freshMeat.printStudent();
+//                    System.out.println('\n');
+//                }
                 break;
             case 3:
                 double average = directory.calculateAverageAge();
