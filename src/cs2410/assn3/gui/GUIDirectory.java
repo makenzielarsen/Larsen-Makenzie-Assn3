@@ -5,8 +5,6 @@ import cs2410.assn3.Student;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -36,11 +34,11 @@ public class GUIDirectory extends JDialog {
 
     private JPanel createBottomPanel() {
         JPanel bottomPanel = new JPanel();
-        JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(e -> pressedCancel());
+        JButton quitButton = new JButton("Quit");
+        quitButton.addActionListener(e -> pressedQuit());
         JButton okButton = new JButton("OK");
         okButton.addActionListener(e -> pressedOK());
-        bottomPanel.add(cancelButton);
+        bottomPanel.add(quitButton);
         bottomPanel.add(okButton);
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.LINE_AXIS));
         return bottomPanel;
@@ -49,10 +47,13 @@ public class GUIDirectory extends JDialog {
     private JPanel createTopPanel() {
         JPanel topPanel = new JPanel();
         JTextArea menu = new JTextArea("Menu: \n 1. List Directory contents \n 2. Add new student to the Directory \n 3. Display average age of students \n 4. Quit program. \n");
+        JPanel textfieldPanel = new JPanel();
         textField = new JTextField();
         textField.setColumns(5);
         topPanel.add(menu);
-        topPanel.add(textField);
+        textfieldPanel.add(textField);
+        textfieldPanel.setLayout(new FlowLayout());
+        topPanel.add(textfieldPanel);
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
         return topPanel;
     }
@@ -84,9 +85,9 @@ public class GUIDirectory extends JDialog {
     }
 
     private void pressedOK() {
-        // parse the value of the the text field
-        // do the thing for that value
-        switch (Integer.parseInt(textField.getText())) {
+        int choice = Integer.parseInt(textField.getText());
+        textField.setText("");
+        switch (choice) {
             case 1:
                 showDirectory();
                 break;
@@ -140,7 +141,7 @@ public class GUIDirectory extends JDialog {
         dialog.setVisible(true);
     }
 
-    private void pressedCancel() {
+    private void pressedQuit() {
         quit();
     }
 }
